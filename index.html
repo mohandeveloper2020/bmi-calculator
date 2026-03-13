@@ -3,14 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BMI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>BMI Calculator</h1>
-    <p>Enter your height and weight to calculate your BMI.</p>
-    <button onclick="calculateBMI()">Calculate BMI</button>
-    <img src="bmi-chart.png" alt="bmi chart" width="1000">
-    <h2 id="result"></h2>
+    <main class="page-wrap">
+        <section class="bmi-card">
+            <div class="content-col">
+                <p class="eyebrow">Health Check Tool</p>
+                <h1>BMI Calculator</h1>
+                <p class="lead">Enter your height and weight to calculate your BMI instantly.</p>
+
+                <form class="bmi-form" onsubmit="event.preventDefault(); calculateBMI();">
+                    <div class="field-group">
+                        <label for="height">Height (feet)</label>
+                        <input type="number" id="height" name="height" required min="4" max="8" step="0.1" placeholder="e.g. 5.8">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" name="weight" required min="10" max="500" step="0.1" placeholder="e.g. 72">
+                    </div>
+
+                    <button type="submit" class="calc-btn">Calculate BMI</button>
+                </form>
+                <h2 id="result" class="result" aria-live="polite">Your BMI result will appear here.</h2>
+            </div>
+
+            <div class="image-col">
+                <img src="bmi-chart.png" alt="Body Mass Index chart reference">
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
