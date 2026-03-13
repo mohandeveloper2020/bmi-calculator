@@ -32,3 +32,8 @@ BMI (Body Mass Index) calculator application.
 ## License
 
 This project is licensed under the MIT License.
+## Screenshot
+
+Below is a preview of the BMI Calculator application:
+
+![BMI Calculator Screenshot](app-screenshot.png)
