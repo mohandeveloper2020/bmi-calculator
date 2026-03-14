@@ -137,13 +137,33 @@ h1 {
 .result {
     margin: 8px 0 0;
     padding: 14px 16px;
-    border-left: 5px solid var(--accent);
+    /* border-left: 5px solid var(--accent); */
     border-radius: var(--radius-lg);
-    background: #fff7ed;
+    /* background: #fff7ed; */
     font-family: "Source Serif 4", Georgia, serif;
     font-size: clamp(1.15rem, 2vw, 1.45rem);
     font-weight: 500;
-    color: #9a3412;
+    /* color: #9a3412; */
+}
+
+.result.underweight {
+    background-color: #56CAF4;
+}
+
+.result.normal-weight {
+    background-color: #9EB738;
+}
+
+.result.class-i-obesity {
+    background-color: #FACB04;
+}
+
+.result.class-ii-obesity {
+    background-color: #F58B19;
+}
+
+.result.class-iii-obesity {
+    background-color: #EF421E;
 }
 
 .image-col {
