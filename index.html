@@ -17,7 +17,7 @@
                 <h1>BMI Calculator</h1>
                 <p class="lead">Enter your height and weight to calculate your BMI instantly.</p>
 
-                <form class="bmi-form" onsubmit="event.preventDefault(); calculateBMI();">
+                <form class="bmi-form">
                     <div class="field-group">
                         <label for="height">Height (feet)</label>
                         <input type="number" id="height" name="height" required min="4" max="8" step="0.1" placeholder="e.g. 5.8">
@@ -28,7 +28,6 @@
                         <input type="number" id="weight" name="weight" required min="10" max="500" step="0.1" placeholder="e.g. 72">
                     </div>
 
-                    <button type="submit" class="calc-btn">Calculate BMI</button>
                 </form>
                 <h2 id="result" class="result" aria-live="polite">Your BMI result will appear here.</h2>
             </div>
