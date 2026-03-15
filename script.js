@@ -1,12 +1,42 @@
 const bmiClasses = ["underweight", "normal-weight", "class-i-obesity", "class-ii-obesity", "class-iii-obesity"];
+const heightUnitConfig = {
+    cm: { min: 100, max: 250, placeholder: "e.g. 170" },
+    inch: { min: 40, max: 100, placeholder: "e.g. 67" },
+    feet: { min: 3, max: 8, placeholder: "e.g. 5.8" }
+};
+
+const convertHeightToCm = (heightValue, unit) => {
+    switch (unit) {
+    case "cm":
+        return heightValue;
+    case "inch":
+        return heightValue * 2.54;
+    case "feet":
+        return heightValue * 30.48;
+    default:
+        return NaN;
+    }
+};
+
+const applyHeightUnitConfig = () => {
+    const heightElement = document.getElementById("height");
+    const heightUnitElement = document.getElementById("height-unit");
+    const config = heightUnitConfig[heightUnitElement.value];
+
+    heightElement.min = String(config.min);
+    heightElement.max = String(config.max);
+    heightElement.placeholder = config.placeholder;
+};
 
 const calculateBMI = () => {
     const heightElement = document.getElementById("height");
+    const heightUnitElement = document.getElementById("height-unit");
     const weightElement = document.getElementById("weight");
     const resultElement = document.getElementById("result");
 
     // get the height and weight input values
     const heightInput = heightElement.value;
+    const heightUnit = heightUnitElement.value;
     const weightInput = weightElement.value;
 
     // convert the input values to numbers
@@ -26,8 +56,13 @@ const calculateBMI = () => {
         return;
     }
 
-    // Convert height from feet to centimeters
-    const height = heightNum * 30.48;
+    // Convert height to centimeters based on selected unit.
+    const height = convertHeightToCm(heightNum, heightUnit);
+
+    if (Number.isNaN(height)) {
+        resultElement.textContent = "Please select a valid height unit.";
+        return;
+    }
 
     // Formula to calculate bmi
     const bmi = weightNum / height / height * 10000;
@@ -65,6 +100,7 @@ const calculateBMI = () => {
 
 const setupLiveBMI = () => {
     const heightElement = document.getElementById("height");
+    const heightUnitElement = document.getElementById("height-unit");
     const weightElement = document.getElementById("weight");
 
     const handleInput = () => {
@@ -72,7 +108,13 @@ const setupLiveBMI = () => {
     };
 
     heightElement.addEventListener("input", handleInput);
+    heightUnitElement.addEventListener("change", () => {
+        applyHeightUnitConfig();
+        handleInput();
+    });
     weightElement.addEventListener("input", handleInput);
+
+    applyHeightUnitConfig();
 };
 
 setupLiveBMI();
