@@ -168,7 +168,7 @@ h1 {
 
 .image-col {
     position: relative;
-    align-self: stretch;
+    align-self: center;
 }
 
 .image-col img {
