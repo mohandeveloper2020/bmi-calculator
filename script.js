@@ -68,34 +68,42 @@ const calculateBMI = () => {
     const bmi = weightNum / height / height * 10000;
 
     let bodyMass;
+    let advice;
 
     switch (true) {
     case bmi < 18.5:
         bodyMass = "Underweight";
         resultElement.classList.add("underweight");
+        advice = "Consider a balanced diet and consult a healthcare provider for personalized advice.";
         break;
     case bmi < 25:
         bodyMass = "Normal weight";
         resultElement.classList.add("normal-weight");
+        advice = "Maintain your healthy lifestyle with regular exercise and a balanced diet.";
         break;
     case bmi < 30:
         bodyMass = "Class I Obesity";
         resultElement.classList.add("class-i-obesity");
+        advice = "Consider a structured weight loss program and consult a healthcare provider for guidance.";
         break;
     case bmi < 40:
         bodyMass = "Class II Obesity";
         resultElement.classList.add("class-ii-obesity");
+        advice = "Consider a more intensive weight loss program and consult a healthcare provider for guidance.";
         break;
     case bmi >= 40:
         bodyMass = "Class III Obesity";
         resultElement.classList.add("class-iii-obesity");
+        advice = "Seek immediate medical attention and follow a comprehensive treatment plan.";
         break;
     default:
         bodyMass = "Unknown category";
+        advice = "Please consult a healthcare provider for guidance.";
     }
 
     // Display the BMI result and body mass category
-    resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)} - ${bodyMass}`;
+    resultElement.innerHTML = `Your BMI is: ${bmi.toFixed(2)} - ${bodyMass}
+    <p class="advice">${advice}</p>`;
 };
 
 const setupLiveBMI = () => {
